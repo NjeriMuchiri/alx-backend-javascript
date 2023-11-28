@@ -4,5 +4,5 @@ export default function appendToEachArrayValue(array, appendString) {
     value = appendString + value;
     this.arrayList.push(value);
   }
-  return array;
+  return this.arrayList;
 }
