@@ -5,7 +5,7 @@ function handleResponseFromAPI(promise) {
       return new Promise((resolve, reject) => {
         if (promise) {
           resolve({
-            statuc: 200,
+            status: 200,
             body: 'success',
           });
         } else {
