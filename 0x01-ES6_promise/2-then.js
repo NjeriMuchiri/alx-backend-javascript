@@ -4,7 +4,7 @@ function handleResponseFromAPI(promise) {
       resolve({
         status: 200,
         body: 'Success',
-      }).then(() => { console.log('Got a response from the API') });
+      }).then(() => { console.log('Got a response from the API'); });
     } else {
       reject(new Error(''));
     }
