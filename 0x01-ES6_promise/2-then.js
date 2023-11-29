@@ -9,7 +9,7 @@ function handleResponseFromAPI(promise) {
             body: 'success',
           });
         } else {
-          reject(new Error());
+          reject();
         }
       });
     });
