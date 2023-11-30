@@ -1,41 +1,52 @@
-class HolbertonCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
-    this._name = name;
-    this._length = length;
-    this._students = students;
+    this._name = this.validateString(name, 'name');
+    this._length = this.validateNumber(length, 'length');
+    this._students = this.validateArray(students, 'students');
   }
 
   get name() {
-    if (typeof this.name === string) {
-      return this._name;
-    }
-    throw new TypeError(`${this.name} must be a string.`);
+    return this._name;
   }
 
-  set name(theName) {
-    this.name = this.validateString(theName, 'name');
+  set name(newName) {
+    this._name = this.validateString(newName, 'name');
   }
 
   get length() {
-    if (typeof this.length === Number) {
-      return this._length;
-    }
-    throw new TypeError(`${this.length} must be a number.`);
+    return this._length;
   }
 
-  set length(theLength) {
-    this._length = this.validateNumber(theLength, 'length');
+  set length(newLength) {
+    this._length = this.validateNumber(newLength, 'length');
   }
 
   get students() {
-    if (typeof this.students === Array) {
-      return this._students;
-    }
-    throw new TypeError(`${this.students} must be an array`);
+    return this._students;
   }
 
-  set students(theStudents) {
-    this._students = this.validateArray(theStudents, 'students');
+  set students(newStudents) {
+    this._students = this.validateArray(newStudents, 'students');
+  }
+
+  validateString(value, attribute) {
+    if (typeof value !== 'string') {
+      throw new TypeError(`${attribute} must be a string.`);
+    }
+    return value;
+  }
+
+  validateNumber(value, attribute) {
+    if (typeof value !== 'number') {
+      throw new TypeError(`${attribute} must be a number.`);
+    }
+    return value;
+  }
+
+  validateArray(value, attribute) {
+    if (!Array.isArray(value)) {
+      throw new TypeError(`${attribute} must be an array.`);
+    }
+    return value;
   }
 }
-export default HolbertonCourse;
