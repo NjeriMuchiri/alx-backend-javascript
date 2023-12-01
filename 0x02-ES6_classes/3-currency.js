@@ -17,7 +17,7 @@ class Currency {
   }
 
   set name(theName) {
-    this.__name = this.validateString(theName, 'name');
+    this._name = this.validateString(theName, 'name');
   }
 
   displayFullCurrency() {
