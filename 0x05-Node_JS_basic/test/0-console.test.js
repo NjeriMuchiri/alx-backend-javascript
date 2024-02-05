@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 
-const displayMessage = require('./0-console');
+const displayMessage = require('../0-console');
 
 describe('displayMessage', () => {
   let consoleSpy;
