@@ -6,9 +6,16 @@ process.stdin.on('readable', () => {
   const chunk = process.stdin.read();
   if (chunk !== null) {
     process.stdout.write(`Your name is: ${chunk}`);
+    done();
   }
 });
 
 process.stdin.on('end', () => {
   process.stdout.write('This important software is now closing\n');
 });
+
+function done() {
+  // console.log("Your name is: ");
+
+  process.exit();
+}
