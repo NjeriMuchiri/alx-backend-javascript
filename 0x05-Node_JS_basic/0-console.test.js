@@ -1,17 +1,24 @@
-const chai = require('chai');
-const displayMessage = require('./yourFileName'); // Replace 'yourFileName' with the actual file name containing your function
+const { expect } = require('chai');
+const sinon = require('sinon');
 
-const { expect } = chai;
+const displayMessage = require('./0-console');
 
-describe('displayMessage function', () => {
-  it('should log the provided string to the console', () => {
-    // Arrange
-    const consoleLogSpy = chai.spy.on(console, 'log'); // Using the 'chai-spies' package for spying on console.log
+describe('displayMessage', () => {
+  let consoleSpy;
 
-    // Act
-    displayMessage('Hello, world!');
+  beforeEach(() => {
+    consoleSpy = sinon.spy(console, 'log');
+  });
 
-    // Assert
-    expect(consoleLogSpy).to.have.been.called.with('Hello, world!');
+  afterEach(() => {
+    consoleSpy.restore();
+  });
+
+  it('logs to the console the right messages', () => {
+    displayMessage('Hello Holberton School!');
+    displayMessage('We are going to learn Node JS today');
+
+    expect(consoleSpy.calledWith('Hello Holberton School!')).to.be.true;
+    expect(consoleSpy.calledWith('We are going to learn Node JS today')).to.be.true;
   });
 });
